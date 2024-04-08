@@ -7,11 +7,10 @@ public class clase2 {
 
         objeto.saludar();
         System.out.println("El área de un círculo de radio 3 es: " + objeto.calcularAreaCirculo(3));
-        System.out.println("El perímetro de un círculo de radio 3 es: " + objeto.calcularPerimetroCirculo(3));
-        System.out.println("El área de un trapecio con bases 4 y 6 y altura 3 es: " + objeto.calcularAreaTrapecio(4, 6, 3));
-        System.out.println("El volumen de una esfera con radio 4 es: " + objeto.calcularVolumenEsfera(4));
-        System.out.println("El perímetro de un cuadrado con lado 5 es: " + objeto.calcularPerimetroCuadrado(5));
-        System.out.println("El perímetro de un rectángulo con base 5 y altura 6 es: " + objeto.calcularPerimetroRectangulo(5, 6));
+        System.out.println("El área de un rombo con diagonales 4 y 6 es: " + objeto.calcularAreaRombo(4, 6));
+        System.out.println("El perímetro de un triángulo con lados 3, 4 y 5 es: " + objeto.calcularPerimetroTriangulo(3, 4, 5));
+        System.out.println("El área de un pentágono regular con lado 6 es: " + objeto.calcularAreaPentagono(6));
+        System.out.println("El volumen de un cubo con lado 4 es: " + objeto.calcularVolumenCubo(4));
     }
 
     public void saludar() {
@@ -22,23 +21,19 @@ public class clase2 {
         return Math.PI * Math.pow(radio, 2);
     }
 
-    public double calcularPerimetroCirculo(double radio) {
-        return 2 * Math.PI * radio;
+    public double calcularPerimetroTriangulo(double lado1, double lado2, double lado3) {
+        return lado1 + lado2 + lado3;
     }
 
-    public double calcularAreaTrapecio(double baseMayor, double baseMenor, double altura) {
-        return ((baseMayor + baseMenor) * altura) / 2;
+    public double calcularAreaRombo(double diagonalMayor, double diagonalMenor) {
+        return (diagonalMayor * diagonalMenor) / 2;
     }
 
-    public double calcularVolumenEsfera(double radio) {
-        return (4.0/3.0) * Math.PI * Math.pow(radio, 3);
+    public double calcularAreaPentagono(double lado) {
+        return 0.25 * Math.sqrt(5 * (5 + 2 * Math.sqrt(5))) * Math.pow(lado, 2);
     }
-    
-    public double calcularPerimetroCuadrado(double lado) {
-        return 4 * lado;
-    }
-    
-    public double calcularPerimetroRectangulo(double base, double altura) {
-        return 2 * (base + altura);
+
+    public double calcularVolumenCubo(double lado) {
+        return Math.pow(lado, 3);
     }
 }
