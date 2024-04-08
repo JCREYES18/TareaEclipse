@@ -1,5 +1,6 @@
 package clases;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class clase3 {
@@ -8,39 +9,23 @@ public class clase3 {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Ingrese una serie de números separados por espacios:");
 
-        int[] numeros = leerNumeros(scanner);
+        int[] numeros = Arrays.stream(scanner.nextLine().split(" ")).mapToInt(Integer::parseInt).toArray();
 
-        System.out.println("Los números ingresados son: ");
-        for (int num : numeros) {
-            System.out.print(num + " ");
-        }
+        System.out.println("Los números ingresados son: " + Arrays.toString(numeros));
 
-        double promedio = calcularPromedio(numeros);
-        System.out.println("\nEl promedio de los números ingresados es: " + promedio);
+        int total = Arrays.stream(numeros).sum();
+        System.out.println("El total de los números ingresados es: " + total);
+
+        int maximo = Arrays.stream(numeros).max().getAsInt();
+        System.out.println("El número máximo ingresado es: " + maximo);
+
+        double mediana = calcularMediana(numeros);
+        System.out.println("La mediana de los números ingresados es: " + mediana);
     }
 
-    public static int[] leerNumeros(Scanner scanner) {
-        System.out.print("Números: ");
-        String[] entrada = scanner.nextLine().split(" ");
-        int[] numeros = new int[entrada.length];
-        
-        for (int i = 0; i < entrada.length; i++) {
-            try {
-                numeros[i] = Integer.parseInt(entrada[i]);
-            } catch (NumberFormatException e) {
-                System.out.println("Error: Ingrese solo números separados por espacios.");
-                break;
-            }
-        }
-        
-        return numeros;
-    }
-
-    public static double calcularPromedio(int[] numeros) {
-        double sumatoria = 0;
-        for (int num : numeros) {
-            sumatoria += num;
-        }
-        return sumatoria / numeros.length;
+    public static double calcularMediana(int[] numeros) {
+        Arrays.sort(numeros);
+        int n = numeros.length;
+        return (n % 2 != 0) ? numeros[n / 2] : (numeros[n / 2 - 1] + numeros[n / 2]) / 2.0;
     }
 }
