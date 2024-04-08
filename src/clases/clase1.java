@@ -6,51 +6,31 @@ public class clase1 {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
         System.out.println("Bienvenido al programa");
 
-        boolean salir = false;
-        while (!salir) {
+        while (true) {
             System.out.println("Por favor, seleccione una opción:");
             System.out.println("1. Sumar");
             System.out.println("2. Restar");
-            System.out.println("5. Salir");
+            System.out.println("3. Dividir");
+            System.out.println("4. Salir");
 
-            int opcion = obtenerOpcion(scanner);
-            if (opcion == 5) {
-                salir = true;
+            int opcion = scanner.nextInt();
+            if (opcion == 4) {
                 System.out.println("Saliendo del programa...");
-            } else if (opcion >= 1 && opcion <= 4) {
-                ejecutarOperacion(scanner, opcion);
-            } else {
-                System.out.println("Opción no válida, por favor seleccione nuevamente.");
+                break;
             }
+            if (opcion < 1 || opcion > 3) {
+                System.out.println("Opción no válida, por favor seleccione nuevamente.");
+                continue;
+            }
+
+            System.out.println("Ingrese dos números:");
+            double num1 = scanner.nextDouble();
+            double num2 = scanner.nextDouble();
+
+            double resultado = (opcion == 1) ? num1 + num2 : (opcion == 2) ? num1 - num2 : num2 != 0 ? num1 / num2 : Double.POSITIVE_INFINITY;
+            System.out.println("El resultado es: " + resultado);
         }
-    }
-
-    private static int obtenerOpcion(Scanner scanner) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	public static void ejecutarOperacion(Scanner scanner, int opcion) {
-        System.out.println("Ingrese dos números para la operación:");
-        double num1 = scanner.nextDouble();
-        double num2 = scanner.nextDouble();
-        double resultado = 0;
-
-        switch (opcion) {
-            case 1:
-                resultado = num1 + num2;
-                break;
-            case 2:
-                resultado = num1 - num2;
-                break;
-          
-             
-           
-        }
-
-        System.out.println("El resultado es: " + resultado);
     }
 }
