@@ -6,29 +6,13 @@ public class clase1 {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Bienvenido al programa");
+        System.out.println("Bienvenido a la Calculadora Simple");
 
         while (true) {
             mostrarMenu();
 
-            int opcion;
-            try {
-                opcion = scanner.nextInt();
-            } catch (Exception e) {
-                System.out.println("Opción no válida, por favor seleccione nuevamente.");
-                scanner.next();
-                continue;
-            }
-
-            if (opcion == 4) {
-                System.out.println("Saliendo del programa...");
-                break;
-            }
-
-            if (opcion < 1 || opcion > 3) {
-                System.out.println("Opción no válida, por favor seleccione nuevamente.");
-                continue;
-            }
+            int opcion = obtenerOpcionValida(scanner);
+            if (opcion == 4) break;
 
             System.out.println("Ingrese dos números:");
             double num1 = scanner.nextDouble();
@@ -45,5 +29,21 @@ public class clase1 {
         System.out.println("2. Restar");
         System.out.println("3. Dividir");
         System.out.println("4. Salir");
+    }
+
+    public static int obtenerOpcionValida(Scanner scanner) {
+        int opcion;
+        while (true) {
+            System.out.print("Ingrese su opción: ");
+            try {
+                opcion = scanner.nextInt();
+                if (opcion >= 1 && opcion <= 4) break;
+                System.out.println("Opción no válida, por favor seleccione nuevamente.");
+            } catch (Exception e) {
+                System.out.println("Opción no válida, por favor seleccione nuevamente.");
+                scanner.next();
+            }
+        }
+        return opcion;
     }
 }
