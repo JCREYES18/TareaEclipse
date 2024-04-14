@@ -4,37 +4,36 @@ public class clase2 {
 
     public static void main(String[] args) {
         clase2 objeto = new clase2();
-
         objeto.saludar();
-        System.out.println("Calculando algunas medidas geométricas...");
-        System.out.println("El área de un círculo de radio 3 es: " + objeto.calcularAreaCirculo(3));
-        System.out.println("El área de un rombo con diagonales 4 y 6 es: " + objeto.calcularAreaRombo(4, 6));
-        System.out.println("El perímetro de un triángulo con lados 3, 4 y 5 es: " + objeto.calcularPerimetroTriangulo(3, 4, 5));
-        System.out.println("El área de un pentágono regular con lado 6 es: " + objeto.calcularAreaPentagono(6));
-        System.out.println("El volumen de un cubo con lado 4 es: " + objeto.calcularVolumenCubo(4));
+        System.out.println("Realizando cálculos matemáticos...");
+        System.out.println("Resultado de f(x) = x^2 + 3x + 2 para x = 5: " + objeto.calcularFuncionCuadratica(5));
+        System.out.println("Suma de los primeros 10 números naturales: " + objeto.calcularSumaNaturales(10));
+        System.out.println("Factorial de 6: " + objeto.calcularFactorial(6));
+        System.out.println("Valor absoluto de -8: " + objeto.calcularValorAbsoluto(-8));
+        System.out.println("Raíz cuadrada de 25: " + objeto.calcularRaizCuadrada(25));
     }
 
     public void saludar() {
         System.out.println("¡Hola desde la clase2!");
     }
 
-    public double calcularAreaCirculo(double radio) {
-        return Math.PI * Math.pow(radio, 2);
+    public double calcularFuncionCuadratica(double x) {
+        return Math.pow(x, 2) + 3 * x + 2;
     }
 
-    public double calcularPerimetroTriangulo(double lado1, double lado2, double lado3) {
-        return lado1 + lado2 + lado3;
+    public int calcularSumaNaturales(int n) {
+        return n * (n + 1) / 2;
     }
 
-    public double calcularAreaRombo(double diagonalMayor, double diagonalMenor) {
-        return (diagonalMayor * diagonalMenor) / 2;
+    public int calcularFactorial(int n) {
+        return (n == 0) ? 1 : n * calcularFactorial(n - 1);
     }
 
-    public double calcularAreaPentagono(double lado) {
-        return 0.25 * Math.sqrt(5 * (5 + 2 * Math.sqrt(5))) * Math.pow(lado, 2);
+    public int calcularValorAbsoluto(int num) {
+        return Math.abs(num);
     }
 
-    public double calcularVolumenCubo(double lado) {
-        return Math.pow(lado, 3);
+    public double calcularRaizCuadrada(double num) {
+        return Math.sqrt(num);
     }
 }
