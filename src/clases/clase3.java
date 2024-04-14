@@ -1,46 +1,45 @@
 package clases;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class clase3 {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Ingrese una serie de números separados por espacios:");
+        System.out.println("Por favor, ingrese una serie de palabras separadas por espacios:");
 
-        int[] numeros = leerNumeros(scanner);
+        String[] palabras = scanner.nextLine().split(" ");
 
-        System.out.println("Los números ingresados son: ");
-        for (int num : numeros) {
-            System.out.print(num + " ");
-        }
+        System.out.println("Las palabras ingresadas son: " + Arrays.toString(palabras));
 
-        double promedio = calcularPromedio(numeros);
-        System.out.println("\nEl promedio de los números ingresados es: " + promedio);
+        int cantidadPalabras = palabras.length;
+        System.out.println("La cantidad de palabras ingresadas es: " + cantidadPalabras);
+
+        String palabraMasLarga = encontrarPalabraMasLarga(palabras);
+        System.out.println("La palabra más larga ingresada es: " + palabraMasLarga);
+
+        String palabraMasCorta = encontrarPalabraMasCorta(palabras);
+        System.out.println("La palabra más corta ingresada es: " + palabraMasCorta);
     }
 
-    public static int[] leerNumeros(Scanner scanner) {
-        System.out.print("Números: ");
-        String[] entrada = scanner.nextLine().split(" ");
-        int[] numeros = new int[entrada.length];
-        
-        for (int i = 0; i < entrada.length; i++) {
-            try {
-                numeros[i] = Integer.parseInt(entrada[i]);
-            } catch (NumberFormatException e) {
-                System.out.println("Error: Ingrese solo números separados por espacios.");
-                break;
+    public static String encontrarPalabraMasLarga(String[] palabras) {
+        String palabraMasLarga = "";
+        for (String palabra : palabras) {
+            if (palabra.length() > palabraMasLarga.length()) {
+                palabraMasLarga = palabra;
             }
         }
-        
-        return numeros;
+        return palabraMasLarga;
     }
 
-    public static double calcularPromedio(int[] numeros) {
-        double sumatoria = 0;
-        for (int num : numeros) {
-            sumatoria += num;
+    public static String encontrarPalabraMasCorta(String[] palabras) {
+        String palabraMasCorta = palabras[0];
+        for (String palabra : palabras) {
+            if (palabra.length() < palabraMasCorta.length()) {
+                palabraMasCorta = palabra;
+            }
         }
-        return sumatoria / numeros.length;
+        return palabraMasCorta;
     }
 }
