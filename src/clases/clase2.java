@@ -6,6 +6,7 @@ public class clase2 {
         clase2 objeto = new clase2();
 
         objeto.saludar();
+        System.out.println("Calculando algunas medidas geométricas...");
         System.out.println("El área de un círculo de radio 3 es: " + objeto.calcularAreaCirculo(3));
         System.out.println("El área de un rombo con diagonales 4 y 6 es: " + objeto.calcularAreaRombo(4, 6));
         System.out.println("El perímetro de un triángulo con lados 3, 4 y 5 es: " + objeto.calcularPerimetroTriangulo(3, 4, 5));
