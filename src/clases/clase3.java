@@ -11,7 +11,8 @@ public class clase3 {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Por favor, ingrese una serie de números separados por espacios:");
 
-        int[] numeros = Arrays.stream(scanner.nextLine().split(" ")).mapToInt(Integer::parseInt).toArray();
+        String[] numerosStr = scanner.nextLine().split(" ");
+        int[] numeros = Arrays.stream(numerosStr).mapToInt(Integer::parseInt).toArray();
 
         System.out.println("Los números ingresados son: " + Arrays.toString(numeros));
 
